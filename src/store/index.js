@@ -6,19 +6,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    users: {},
-    questions: false
+    user: '',
+    users: [],
+    questions: false,
+    userScore: 0
   },
   mutations: {
-    SOCKET_LOGIN (state, username) {
-      console.log(username)
-      console.log(state.users)
-      state.users[username] = 0
+    incrementScore (state) {
+      state.userScore++
+    },
+    SOCKET_LOGIN (state, users) {
+      state.user = localStorage.getItem('user')
+      state.users = users
       // this.$socket.emit('login', data)
     },
     SOCKET_REFRESH (state, data) {
       state.users = data
     },
+    // SOCKET_INCREMENT_SCORE (state, data) {
+    // },
     SOCKET_question (state, data) {
       console.log('sampai question')
       state.questions = data

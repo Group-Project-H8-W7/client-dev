@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <div v-for="(score, name, i) in users" :key="i">{{ name }}</div>
+    <!-- <p>{{users[0]}}</p> -->
+    <div
+      v-for="user in users"
+      :key="user.id"
+    >{{ user.name }}</div>
     <b-button @click="start">countdown</b-button>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
